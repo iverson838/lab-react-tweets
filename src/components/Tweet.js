@@ -1,34 +1,23 @@
-function Tweet() {
+import ProfileImage from './ProfileImage';
+import Message from './Message';
+import Timestamp from './Timesatamp';
+import User from './User';
+import Actions from './Actions';
+
+function Tweet(props) {
   return (
     <div className="tweet">
-      <img
-        src="https://i.imgur.com/9yw1Fyw.jpg"
-        className="profile"
-        alt="profile"
-      />
+      <ProfileImage image={props.tweet.user.image} />
 
       <div className="body">
         <div className="top">
-          <span className="user">
-            <span className="name">Ironhack</span>
-            <span className="handle">@ironhack</span>
-          </span>
-
-          <span className="timestamp">Nov 30, 2020</span>
+          <User userData={props.tweet.user} />
+          <Timestamp timestamp={props.tweet.timestamp} />
         </div>
 
-        <p className="message">
-          On December 7th, we will be hosting a #webinar that will introduce you
-          to #SQL! Are you ready? 🚀
-        </p>
+        <Message message={props.tweet.message} />
 
-        <div className="actions">
-          {/* Font Awesome icons */}
-          <i class="far fa-comment"></i>
-          <i class="fas fa-retweet"></i>
-          <i class="far fa-heart"></i>
-          <i class="fas fa-share"></i>
-        </div>
+        <Actions />
       </div>
 
       <i class="fas fa-ellipsis-h"></i>
@@ -37,3 +26,14 @@ function Tweet() {
 }
 
 export default Tweet;
+
+// {
+//   user: {
+//     name: 'Thoughts of Dog®',
+//     image: 'https://i.imgur.com/b0EdHVV.jpg',
+//     handle: 'dog_feelings'
+//   },
+//   timestamp: '1h ago',
+//   message:
+//     'the human likes to say. that i live here rent free. but i would argue. this housing accommodation. is my payment. for a lifetime of love. and excellent company'
+// },
